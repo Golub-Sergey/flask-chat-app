@@ -16,8 +16,10 @@
                 socket.send('User has connected!')
             });
 
-            socket.on('message',function(msg){              
-                $("#messages").append('<li>' + msg + '</li>');
+            socket.on('message',function(msg){
+                temp = JSON.stringify(msg)
+                temp = JSON.parse(temp);              
+                $("#messages").append('<li>' + '<h3>' + temp.username + '</h3>' + '<p>' + temp.message + '</p>' +'</li>');
                 console.log('Received message');
             });
 
